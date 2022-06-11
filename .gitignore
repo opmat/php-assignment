@@ -2,3 +2,7 @@
 vendor/
 packages/
 .env
+
+mynotes.txt
+/nbproject/private/
+nbproject/
