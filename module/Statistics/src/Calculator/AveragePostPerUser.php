@@ -22,7 +22,7 @@ class AveragePostPerUser extends AbstractCalculator
     /**
      * @var array
      */
-    private $userPosts = [];
+    private $userPostsTotal = [];
     
     /**
      * @param SocialPostTo $postTo
@@ -31,7 +31,7 @@ class AveragePostPerUser extends AbstractCalculator
     {
         $authorId = $postTo->getAuthorId();
 
-        $this->userPosts[$authorId] = ($this->userPosts[$authorId] ?? 0) + 1;
+        $this->userPostsTotal[$authorId] = ($this->userPostsTotal[$authorId] ?? 0) + 1;
     }
 
     /**
@@ -39,9 +39,9 @@ class AveragePostPerUser extends AbstractCalculator
      */
     protected function doCalculate(): StatisticsTo
     {
-        $nUsers = count($this->userPosts);
+        $nUsers = count($this->userPostsTotal);
         $returnValue = $nUsers > 0
-            ? array_sum($this->userPosts) / $nUsers
+            ? array_sum($this->userPostsTotal) / $nUsers
             : 0;
         
         return (new StatisticsTo())->setValue(round($returnValue,2));
