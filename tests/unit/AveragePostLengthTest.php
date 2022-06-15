@@ -94,7 +94,7 @@ class AveragePostLengthTest extends TestCase
             $statResponse = $extractor->extract($stats, self::STAT_LABELS);
             
             foreach($statResponse["children"] as $stat):
-                if ($stat["name"] === "average-character-length") {
+                if ($stat["name"] === StatsEnum::AVERAGE_POST_LENGTH) {
                     $this->assertEquals(495.25, $stat["value"]);
                     break;
                 }

@@ -95,7 +95,7 @@ class AveragePostPerUserTest extends TestCase
             $statResponse = $extractor->extract($stats, self::STAT_LABELS);
             
             foreach($statResponse["children"] as $stat):
-                if ($stat["name"] === "average-posts-per-user") {
+                if ($stat["name"] === StatsEnum::AVERAGE_POST_NUMBER_PER_USER) {
                     $this->assertEquals(1, $stat["value"]);
                     break;
                 }
