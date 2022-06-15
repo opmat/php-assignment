@@ -6,7 +6,6 @@ namespace Tests\unit;
 
 use PHPUnit\Framework\TestCase;
 use DateTime;
-use Statistics\Builder\ParamsBuilder;
 use Statistics\Enum\StatsEnum;
 use SocialPost\Hydrator\FictionalPostHydrator;
 use Statistics\Service\Factory\StatisticsServiceFactory;
@@ -18,27 +17,31 @@ use Statistics\Dto\ParamsTo;
  *
  * @package Tests\unit
  */
-class AveragePostPerUserTest extends TestCase
+class AveragePostLengthTest extends TestCase
 {
     private const STAT_LABELS = [
-        StatsEnum::TOTAL_POSTS_PER_WEEK         => 'Total posts split by week',
-        StatsEnum::AVERAGE_POST_NUMBER_PER_USER => 'Average number of posts per user in a given month',
-        StatsEnum::AVERAGE_POST_LENGTH          => 'Average character length/post in a given month',
-        StatsEnum::MAX_POST_LENGTH              => 'Longest post by character length in a given month',
+        StatsEnum::TOTAL_POSTS_PER_WEEK         => 
+            'Total posts split by week',
+        StatsEnum::AVERAGE_POST_NUMBER_PER_USER => 
+            'Average number of posts per user in a given month',
+        StatsEnum::AVERAGE_POST_LENGTH          => 
+            'Average character length/post in a given month',
+        StatsEnum::MAX_POST_LENGTH              => 
+            'Longest post by character length in a given month',
     ];
 
     /**
-     * @var Array
+     * @var array
      */
     private $posts;
 
     /**
-     * @var Array
+     * @var array
      */
     private $hydratedPosts;
 
     /**
-     * @var Array
+     * @var array
      */
     private $params;
 
@@ -66,7 +69,10 @@ class AveragePostPerUserTest extends TestCase
         ];
     }
 
-    private function hydrate($posts) 
+    /**
+     * @param array $posts
+     */
+    private function hydrate(array $posts) 
     {
         $hydrator = new FictionalPostHydrator();
         foreach ($posts as $postData) {
